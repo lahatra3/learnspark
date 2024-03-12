@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-public class Main {
+public class SparkMain {
     public static void main(String[] args) {
         log.info("Hello lahatrad...");
 
@@ -20,7 +20,7 @@ public class Main {
         inputData.add(87.25578);
         inputData.add(11.3658);
 
-        log.info("{}", inputData);
+        log.info("INPUT: {}", inputData);
 
         SparkConf sparkConf = new SparkConf()
                 .setAppName("lahatrad")
@@ -28,7 +28,6 @@ public class Main {
 
         try(JavaSparkContext sparkContext = new JavaSparkContext(sparkConf)) {
             JavaRDD<Double> myRdd = sparkContext.parallelize(inputData);
-            sparkContext.close();
         }
     }
 }
